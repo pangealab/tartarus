@@ -1,6 +1,6 @@
 # Create the Heracles Cluster using our module
-module "heracles" {
-  source          = "./modules/heracles"
+module "tartarus" {
+  source          = "./modules/tartarus"
   region          = "${var.region}"
   instance_count  = "${var.instance_count}"
   amisize         = "t2.large"
@@ -16,10 +16,10 @@ module "heracles" {
 
 # Output some useful variables for quick SSH access etc.
 output "metasploit3-public_ip" {
-  value = module.heracles.metasploit3-public_ip
+  value = module.tartarus.metasploit3-public_ip
 }
 
 # Output some useful variables for Ansible
 output "metasploit3-private_ip" {
-  value = module.heracles.metasploit3-private_ip
+  value = module.tartarus.metasploit3-private_ip
 }

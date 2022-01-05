@@ -1,6 +1,7 @@
 # Define an Amazon Linux AMI.
-data "aws_metasploitable3_ami" "ubuntu" {
+data "aws_ami" "metasploitable3_ubuntu" {
   most_recent = true
+  owners      = ["454428865299"]
 
   filter {
     name   = "name"

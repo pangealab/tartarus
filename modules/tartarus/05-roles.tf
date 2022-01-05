@@ -62,31 +62,10 @@ resource "aws_iam_instance_profile" "tartarus-instance-profile" {
   role = aws_iam_role.tartarus-instance-role.name
 }
 
-# Create a instance profile for the control. All profiles need a role, so use
+# Create a instance profile for the metasploit3. All profiles need a role, so use
 # our simple tartarus instance role.
-resource "aws_iam_instance_profile" "tartarus-control-instance-profile" {
+resource "aws_iam_instance_profile" "tartarus-metasploit3-instance-profile" {
   name  = "${var.cluster_id}-control-instance-profile"
-  role = aws_iam_role.tartarus-instance-role.name
-}
-
-# Create a instance profile for the control. All profiles need a role, so use
-# our simple tartarus instance role.
-resource "aws_iam_instance_profile" "tartarus-nginx-instance-profile" {
-  name  = "${var.cluster_id}-nginx-instance-profile"
-  role = aws_iam_role.tartarus-instance-role.name
-}
-
-# Create a instance profile for the control. All profiles need a role, so use
-# our simple tartarus instance role.
-resource "aws_iam_instance_profile" "tartarus-spring-instance-profile" {
-  name  = "${var.cluster_id}-spring-instance-profile"
-  role = aws_iam_role.tartarus-instance-role.name
-}
-
-# Create a instance profile for MySQL Database. All profiles need a role, so use
-# our simple tartarus instance role.
-resource "aws_iam_instance_profile" "tartarus-mysql-instance-profile" {
-  name  = "${var.cluster_id}-mysql-instance-profile"
   role = aws_iam_role.tartarus-instance-role.name
 }
 

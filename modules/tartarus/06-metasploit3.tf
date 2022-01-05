@@ -13,10 +13,9 @@ resource "aws_eip" "metasploit3_eip" {
 
 # metasploit3 Server
 resource "aws_instance" "metasploit3" {
-  ami                  = data.aws_metasploitable3_ami.ubuntu.id
+  ami                  = data.aws_ami.metasploitable3_ubuntu.id
   instance_type        = var.amisize
   iam_instance_profile = aws_iam_instance_profile.tartarus-metasploit3-instance-profile.id
-  user_data            = data.template_file.setup-metasploit3.rendered
   subnet_id            = aws_subnet.public-subnet.id
 
   vpc_security_group_ids = [
