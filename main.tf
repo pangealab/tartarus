@@ -4,7 +4,7 @@ module "tartarus" {
   region          = "${var.region}"
   instance_count  = "${var.instance_count}"
   amisize         = "t2.large"
-  volumesize      = "50"
+  volumesize      = "100"
   vpc_cidr        = "15.0.0.0/16"
   subnetaz        = "${var.subnetaz}"
   subnet_cidr     = "15.0.1.0/24"
