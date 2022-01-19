@@ -20,7 +20,7 @@ resource "aws_instance" "metasploit3ubuntu" {
 
   vpc_security_group_ids = [
     aws_security_group.tartarus-vpc.id,
-    aws_security_group.tartarus-ssh.id,
+    aws_security_group.tartarus-public-ingress.id,
     aws_security_group.tartarus-public-egress.id,
   ]
 

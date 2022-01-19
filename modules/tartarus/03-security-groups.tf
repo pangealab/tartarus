@@ -43,7 +43,15 @@ resource "aws_security_group" "tartarus-public-ingress" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # HTTP Proxy 1
+  # RDP
+  ingress {
+    from_port   = 3389
+    to_port     = 3389
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # HTTP
   ingress {
     from_port   = 8080
     to_port     = 8080
@@ -59,7 +67,7 @@ resource "aws_security_group" "tartarus-public-ingress" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # HTTPS Proxy
+  # HTTPS
   ingress {
     from_port   = 8443
     to_port     = 8443
@@ -111,7 +119,6 @@ resource "aws_security_group" "tartarus-ssh" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["165.225.0.0/17","137.83.128.0/18","165.225.192.0/18","104.129.192.0/20","185.46.212.0/22","199.168.148.0/22","209.51.184.0/26","213.152.228.0/24","216.218.133.192/26","216.52.207.64/26","27.251.211.238/32","64.74.126.64/26","70.39.159.0/24","72.52.96.0/26","8.25.203.0/24","89.167.131.0/24","136.226.0.0/16","147.161.128.0/17"]
   }
 
   # Use our common tags and add a specific name.
