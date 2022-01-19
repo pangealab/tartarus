@@ -62,9 +62,14 @@ resource "aws_iam_instance_profile" "tartarus-instance-profile" {
   role = aws_iam_role.tartarus-instance-role.name
 }
 
-# Create a instance profile for the metasploit3. All profiles need a role, so use
-# our simple tartarus instance role.
-resource "aws_iam_instance_profile" "tartarus-metasploit3-instance-profile" {
+# Create a instance profile for the metasploit3ubuntu
+resource "aws_iam_instance_profile" "tartarus-metasploit3ubuntu-instance-profile" {
+  name  = "${var.cluster_id}-control-instance-profile"
+  role = aws_iam_role.tartarus-instance-role.name
+}
+
+# Create a instance profile for the metasploit3windows
+resource "aws_iam_instance_profile" "tartarus-metasploit3windows-instance-profile" {
   name  = "${var.cluster_id}-control-instance-profile"
   role = aws_iam_role.tartarus-instance-role.name
 }
