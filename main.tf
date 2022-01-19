@@ -15,11 +15,11 @@ module "tartarus" {
 }
 
 # Output some useful variables for quick SSH access etc.
-output "metasploit3-public_ip" {
-  value = module.tartarus.metasploit3-public_ip
+output "metasploit3ubuntu-public_ip" {
+  value = module.tartarus.metasploit3ubuntu-public_ip
 }
 
 # Output some useful variables for Ansible
-output "metasploit3-private_ip" {
-  value = module.tartarus.metasploit3-private_ip
+output "metasploit3windows-public_ip" {
+  value = module.tartarus.metasploit3windows-public_ip
 }
