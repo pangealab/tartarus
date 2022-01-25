@@ -35,6 +35,14 @@ resource "aws_security_group" "tartarus-public-ingress" {
   description = "Security group that allows public ingress to instances, HTTP, HTTPS and more."
   vpc_id      = aws_vpc.tartarus.id
 
+    # SSH
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   # HTTP
   ingress {
     from_port   = 80
@@ -104,28 +112,6 @@ resource "aws_security_group" "tartarus-public-egress" {
     local.common_tags,
     map(
       "Name", "${var.cluster_id}-egress"
-    )
-  )
-}
-
-# Security group which allows SSH access to a host. Used for the bastion.
-resource "aws_security_group" "tartarus-ssh" {
-  name        = "${var.cluster_id}-ssh"
-  description = "Security group that allows public ingress over SSH."
-  vpc_id      = aws_vpc.tartarus.id
-
-  # SSH
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-  }
-
-  # Use our common tags and add a specific name.
-  tags = merge(
-    local.common_tags,
-    map(
-      "Name", "${var.cluster_id}-ssh"
     )
   )
 }
