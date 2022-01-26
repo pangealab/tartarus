@@ -2,7 +2,7 @@
 # This playbook installs the agent stack for this site.
 
 - name: Install ServiceNow ACC
-  hosts: metasploit3ubuntu
+  hosts: ubuntu
   remote_user: ec2-user
   become: yes
 
