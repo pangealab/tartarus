@@ -25,6 +25,6 @@ output "metasploit3windows-public_ip" {
 }
 
 # Output some useful variables for Ansible
-output "control-private_ip" {
-  value = module.tartarus.control-private_ip
+output "control-public_ip" {
+  value = module.tartarus.control-public_ip
 }

@@ -30,9 +30,9 @@ resource "aws_instance" "control" {
   subnet_id            = aws_subnet.public-subnet.id
 
   vpc_security_group_ids = [
-    aws_security_group.heracles-vpc.id,
-    aws_security_group.heracles-ssh.id,
-    aws_security_group.heracles-public-egress.id,
+    aws_security_group.tartarus-vpc.id,
+    aws_security_group.tartarus-ssh.id,
+    aws_security_group.tartarus-public-egress.id,
   ]
 
   //  Control Server Root Disk
