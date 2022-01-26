@@ -25,7 +25,7 @@ resource "aws_eip" "control_eip" {
 resource "aws_instance" "control" {
   ami                  = data.aws_ami.amazonlinux.id
   instance_type        = var.amisize
-  iam_instance_profile = aws_iam_instance_profile.heracles-control-instance-profile.id
+  iam_instance_profile = aws_iam_instance_profile.tartarus-control-instance-profile.id
   user_data            = data.template_file.setup-control.rendered
   subnet_id            = aws_subnet.public-subnet.id
 

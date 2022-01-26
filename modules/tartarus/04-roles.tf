@@ -74,6 +74,12 @@ resource "aws_iam_instance_profile" "tartarus-metasploit3windows-instance-profil
   role = aws_iam_role.tartarus-instance-role.name
 }
 
+# Create a instance profile for the control
+resource "aws_iam_instance_profile" "tartarus-control-instance-profile" {
+  name  = "${var.cluster_id}-control-instance-profile"
+  role = aws_iam_role.tartarus-instance-role.name
+}
+
 # Create a user and access key for tartarus-only permissions
 resource "aws_iam_user" "tartarus-aws-user" {
   name = "${var.cluster_id}-aws-user"
