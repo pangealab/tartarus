@@ -21,7 +21,7 @@ resource "aws_instance" "metasploit3ubuntu" {
   vpc_security_group_ids = [
     aws_security_group.tartarus-vpc.id,
     aws_security_group.tartarus-public-ingress.id,
-    aws_security_group.tartarus-public-egress.id,
+    aws_security_group.tartarus-restricted-egress.id,
   ]
 
   //  metasploit3ubuntu Server Root Disk

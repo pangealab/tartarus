@@ -3,7 +3,7 @@ module "tartarus" {
   source          = "./modules/tartarus"
   region          = "${var.region}"
   instance_count  = "${var.instance_count}"
-  amisize         = "t2.large"
+  amisize         = "t2.xlarge"
   volumesize      = "100"
   vpc_cidr        = "15.0.0.0/16"
   subnetaz        = "${var.subnetaz}"

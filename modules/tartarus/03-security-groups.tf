@@ -17,6 +17,7 @@ resource "aws_security_group" "tartarus-vpc" {
     to_port   = "0"
     protocol  = "-1"
     self      = true
+    cidr_blocks = ["15.0.1.0/24"]
   }
 
   # Use our common tags and add a specific name.
@@ -32,58 +33,18 @@ resource "aws_security_group" "tartarus-vpc" {
 # and common HTTP/S proxy ports.
 resource "aws_security_group" "tartarus-public-ingress" {
   name        = "${var.cluster_id}-ingress"
-  description = "Security group that allows public ingress to instances, HTTP, HTTPS and more."
+  description = "Security group that allows ALL public ingress to instances"
   vpc_id      = aws_vpc.tartarus.id
 
-    # SSH
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
   # HTTP
   ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
+    from_port = "0"
+    to_port   = "0"
+    protocol  = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # RDP
-  ingress {
-    from_port   = 3389
-    to_port     = 3389
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  # HTTP
-  ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  # HTTPS
-  ingress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  # HTTPS
-  ingress {
-    from_port   = 8443
-    to_port     = 8443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-    # Use our common tags and add a specific name.
+  # Use our common tags and add a specific name.
   tags = merge(
     local.common_tags,
     map(
@@ -96,7 +57,7 @@ resource "aws_security_group" "tartarus-public-ingress" {
 # HTTPS, which is needed for yum updates, git access etc etc.
 resource "aws_security_group" "tartarus-public-egress" {
   name        = "${var.cluster_id}-egress"
-  description = "Security group that allows egress to the internet for instances over HTTP and HTTPS."
+  description = "Security group that allows ALL egress to the internet for instances"
   vpc_id      = aws_vpc.tartarus.id
 
   # All Traffic
@@ -112,6 +73,30 @@ resource "aws_security_group" "tartarus-public-egress" {
     local.common_tags,
     map(
       "Name", "${var.cluster_id}-egress"
+    )
+  )
+}
+
+# This security group restricts egress from the instances for HTTP and
+# HTTPS, which is needed for yum updates, git access etc etc.
+resource "aws_security_group" "tartarus-restricted-egress" {
+  name        = "${var.cluster_id}-restricted"
+  description = "Security group restricts egress to the internet for instances"
+  vpc_id      = aws_vpc.tartarus.id
+
+  # All Traffic
+  # egress {
+  #   from_port = "0"
+  #   to_port   = "0"
+  #   protocol  = "-1"
+  #   cidr_blocks = ["0.0.0.0/0"]
+  # }
+
+  # Use our common tags and add a specific name.
+  tags = merge(
+    local.common_tags,
+    map(
+      "Name", "${var.cluster_id}-restricted"
     )
   )
 }
