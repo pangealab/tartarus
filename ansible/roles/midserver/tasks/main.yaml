@@ -2,6 +2,25 @@
 ---
 # This playbook installs the ServiceNow MID Server
 
+- name: Install EPEL Repository
+  command: yum-config-manager --enable epel -y
+  become: yes
+  tags:
+    - epel
+
+- name: Install Common Tools
+  yum: name={{ item }} state=present
+  with_items:
+   - telnet
+   - jq
+   - htop
+   - zip
+   - unzip
+   - python-pip
+  become: yes
+  tags:
+    - tools
+
 - name: Create MID User Account
   become: yes
   shell: |

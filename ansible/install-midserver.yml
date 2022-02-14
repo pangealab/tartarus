@@ -1,13 +1,6 @@
 ---
 # This playbook installs the agent stack for this site.
 
-- name: Install common software on all ubuntu nodes
-  hosts: ubuntu
-  remote_user: vagrant
-
-  roles:
-    - common-ubuntu
-
 - name: Install ServiceNow MID
   hosts: control
   remote_user: ec2-user

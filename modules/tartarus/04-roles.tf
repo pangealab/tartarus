@@ -62,9 +62,9 @@ resource "aws_iam_instance_profile" "tartarus-instance-profile" {
   role = aws_iam_role.tartarus-instance-role.name
 }
 
-# Create a instance profile for the metasploit3ubuntu
-resource "aws_iam_instance_profile" "tartarus-metasploit3ubuntu-instance-profile" {
-  name  = "${var.cluster_id}-metasploit3ubuntu-instance-profile"
+# Create a instance profile for the dopey
+resource "aws_iam_instance_profile" "tartarus-dopey-instance-profile" {
+  name  = "${var.cluster_id}-dopey-instance-profile"
   role = aws_iam_role.tartarus-instance-role.name
 }
 

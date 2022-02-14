@@ -4,7 +4,7 @@
 resource "local_file" "inventory" {
  content = templatefile("inventory.template.cfg", {
       control-public_ip = aws_eip.control_eip.public_ip,
-      metasploit3ubuntu-public_ip = aws_eip.metasploit3ubuntu_eip.public_ip,
+      dopey-public_ip = aws_eip.dopey_eip.public_ip,
       metasploit3windows-public_ip = aws_eip.metasploit3windows_eip.public_ip
   }
  )
