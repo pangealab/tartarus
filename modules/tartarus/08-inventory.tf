@@ -5,7 +5,7 @@ resource "local_file" "inventory" {
  content = templatefile("inventory.template.cfg", {
       control-public_ip = aws_eip.control_eip.public_ip,
       dopey-public_ip = aws_eip.dopey_eip.public_ip,
-      metasploit3windows-public_ip = aws_eip.metasploit3windows_eip.public_ip
+      bashful-public_ip = aws_eip.bashful_eip.public_ip
   }
  )
  filename = "inventory-${var.cluster_name}.cfg"

@@ -69,8 +69,8 @@ resource "aws_iam_instance_profile" "tartarus-dopey-instance-profile" {
 }
 
 # Create a instance profile for the metasploit3windows
-resource "aws_iam_instance_profile" "tartarus-metasploit3windows-instance-profile" {
-  name  = "${var.cluster_id}-metasploit3windows-instance-profile"
+resource "aws_iam_instance_profile" "tartarus-bashful-instance-profile" {
+  name  = "${var.cluster_id}-bashful-instance-profile"
   role = aws_iam_role.tartarus-instance-role.name
 }
 
